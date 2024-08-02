@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from django.views.decorators.csrf import csrf_exempt
 
 
 @api_view(['POST'])
@@ -20,11 +21,12 @@ def register(request):
 
 
 @api_view(['POST'])
+@csrf_exempt
 def user_login(request):
-    # Login de usuário
 
     username = request.data.get('username')
     password = request.data.get('password')
+
     user = authenticate(request, username=username, password=password)
 
     if user is not None:
