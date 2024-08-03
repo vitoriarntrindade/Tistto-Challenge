@@ -29,8 +29,7 @@ class TaskDetail(generics.RetrieveUpdateDestroyAPIView):
 
     def get_queryset(self):
         # Filtrar tarefas pelo usuário autenticado
-        print('aaaaa')
-        print('aaaaa')
+
         return Task.objects.filter(user=self.request.user)
 
 
