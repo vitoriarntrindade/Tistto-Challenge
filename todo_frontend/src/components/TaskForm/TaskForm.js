@@ -4,7 +4,7 @@ function TaskForm({ onSubmit }) {
   // Definindo estados locais para os campos do formulário
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [status, setStatus] = useState("pending");
+  
 
   // Função para lidar com mudanças nos campos do formulário
   const handleChange = (event) => {
@@ -17,9 +17,6 @@ function TaskForm({ onSubmit }) {
       case "description":
         setDescription(value);
         break;
-      case "status":
-        setStatus(value);
-        break;
       default:
         break;
     }
@@ -29,11 +26,10 @@ function TaskForm({ onSubmit }) {
   const handleSubmit = (event) => {
     event.preventDefault(); // Previne o comportamento padrão do formulário
     if (title.trim() && description.trim()) {
-      onSubmit(title, description, status); // Chama a função onSubmit passada via props
+      onSubmit(title, description); // Chama a função onSubmit passada via props
       // Reseta os campos do formulário após o envio
       setTitle("");
       setDescription("");
-      setStatus("pending");
     }
   };
 
@@ -66,24 +62,8 @@ function TaskForm({ onSubmit }) {
         value={description}
         onChange={handleChange}
       />
-      <h2 className="label-wrapper">
-        <label htmlFor="status-input" className="label__lg">
-          Status
-        </label>
-      </h2>
-      <select
-        id="status-input"
-        className="input input__lg"
-        name="status"
-        value={status}
-        onChange={handleChange}
-      >
-        <option value="pending">Pendente</option>
-        <option value="in-progress">Em progresso</option>
-        <option value="completed">Completa</option>
-      </select>
       <button type="submit" className="btn btn__primary btn__lg">
-        Adicionar nova tarefa
+        Adicionar
       </button>
     </form>
   );

@@ -14,7 +14,10 @@ function TaskDetails() {
         setTask(taskData); // Atualiza o estado com os dados da tarefa
       } catch (error) {
         console.error("Failed to fetch task", error);
-        setError("Failed to fetch task"); // Atualiza o estado com a mensagem de erro
+        setError(
+          <div className="getDetails">
+            <span>Não foi possível encontrar a tarefa</span>
+          </div>); // Atualiza o estado com a mensagem de erro
       }
     };
 
@@ -28,12 +31,12 @@ function TaskDetails() {
   if (!task) {
     return <div>Loading...</div>; // Exibe mensagem de carregamento enquanto a tarefa está sendo buscada
   }
-
+  console.log(task.completed)
   return (
     <div className="getDetails">
-      <h2>{task.title}</h2>
-      <p>Descrição: {task.description}</p>
-      <p>Status: {task.completed}</p>
+      <h2>Tarefa {task.title}</h2>
+      <p>Descrição: </p> <br></br>
+      <p className="description">{task.description}</p>
     </div>
   );
 }

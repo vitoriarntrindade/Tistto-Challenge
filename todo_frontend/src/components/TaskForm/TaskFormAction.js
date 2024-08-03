@@ -14,6 +14,6 @@ export const performCreateTask = async (data) => {
     return response.data; // Retorna os dados da tarefa criada
   } catch (error) {
     console.error("Failed to create task", error.response || error.message);
-    throw error; // Repassa o erro para que possa ser tratado no componente
+    throw error; 
   }
 };

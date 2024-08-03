@@ -7,7 +7,6 @@ function TaskEdit() {
   const [task, setTask] = useState(null);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [status, setStatus] = useState("pending");
   const navigate = useNavigate(); // Hook para navegação programática
 
   useEffect(() => {
@@ -17,7 +16,6 @@ function TaskEdit() {
         setTask(taskData);
         setTitle(taskData.title);
         setDescription(taskData.description);
-        setStatus(taskData.completed ? "completed" : "pending");
       } catch (error) {
         console.error("Failed to fetch task", error);
       }
@@ -35,9 +33,6 @@ function TaskEdit() {
      case "description":
        setDescription(value);
        break;
-     case "status":
-       setStatus(value);
-       break;
      default:
        break;
    }
@@ -49,7 +44,6 @@ function TaskEdit() {
       await performUpdateTask(id, {
         title,
         description,
-        completed: status === "completed",
       });
       navigate("/"); // Redireciona para a página inicial após a atualização
     } catch (error) {
@@ -87,22 +81,6 @@ function TaskEdit() {
             value={description}
             onChange={handleChange}
           />
-        </div>
-        <div className="form-group">
-          <label htmlFor="status-input" className="label__lg">
-            Status
-          </label>
-          <select
-            id="status-input"
-            className="input input__lg"
-            name="status"
-            value={status}
-            onChange={handleChange}
-          >
-            <option value="pending">Pendente</option>
-            <option value="in-progress">Em progresso</option>
-            <option value="completed">Completa</option>
-          </select>
         </div>
         <button type="submit" className="btn btn__primary btn__lg">
           atualizar

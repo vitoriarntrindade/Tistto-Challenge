@@ -1,30 +1,33 @@
-import TaskItem from "../TaskItem/TaskItem";
+import React, { useState, useEffect } from "react";
 import TaskForm from "../TaskForm/TaskForm";
 import TaskList from "../TaskList/TaskList";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { fetchTasks } from "../TaskItem/TaskItemAction";
-import { performCreateTask } from "../TaskForm/TaskFormAction";
-import { performDelete } from "../TaskItem/TaskItemAction";
+import { fetchTasks, performDelete } from "../TaskItem/TaskItemAction"
+import { performCreateTask } from "../TaskForm/TaskFormAction"
 
 function Home() {
   const navigate = useNavigate();
-
   const [tasks, setTasks] = useState([]);
 
-  const addTask = async (title, description, status) => {
+  useEffect(() => {
+    const loadTasks = async () => {
+      try {
+        const response = await fetchTasks();
+        setTasks(response);
+      } catch (error) {
+        console.error("Failed to fetch tasks", error);
+      }
+    };
+    loadTasks();
+  }, []);
+
+  const addTask = async (title, description) => {
     try {
-      const response = await performCreateTask({
-        title: title,
-        description: description,
-        completed: status === 'completed',
+      const newTask = await performCreateTask({
+        title,
+        description,
       });
-      
-      const newTask = response;
-      setTasks((prevTasks) => [
-        ...prevTasks,
-        newTask,
-      ]);
+      setTasks((prevTasks) => [...prevTasks, newTask]);
     } catch (error) {
       console.error('There was an error adding the task!', error);
     }
@@ -43,9 +46,7 @@ function Home() {
     if (confirmDelete) {
       try {
         await performDelete(id);
-        // Atualize a lista de tarefas após a exclusão
-        const updatedTasks = await fetchTasks();  
-        setTasks(updatedTasks);
+        setTasks((prevTasks) => prevTasks.filter(task => task.id !== id));
       } catch (error) {
         console.error('There was an error deleting the task!', error);
       }
@@ -54,7 +55,7 @@ function Home() {
 
   return (
     <div className="todoapp stack-large">
-      <h1>Tarefas</h1>
+      <h1>ToDo List</h1>
       <TaskForm onSubmit={addTask} />
       <TaskList 
         tasks={tasks} 

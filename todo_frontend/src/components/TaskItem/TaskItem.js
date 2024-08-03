@@ -4,14 +4,16 @@ import React from "react";
 function TaskItem({ task, onEdit, onDelete, onViewDetails }) {
   return (
     <div>
-      <h3>{task}</h3>
-      <p>{task.description}</p>
+      <div className="title">
+        <h3 className="taskItem">{task}</h3>
+      </div>
+      <p>{task.id}</p>
       <button
         type="button"
         className="btn"
         onClick={() => onViewDetails(task.id)}
       >
-        Ver Detalhes
+        Ver mais
       </button>
       <button type="button" className="btn" onClick={() => onEdit(task.id)}>
         Editar
