@@ -62,6 +62,7 @@ input {
 
 input[type="text"] {
   border-radius: 10px;
+
 }
 
 body {
@@ -90,11 +91,13 @@ body {
 }
 
 .btn {
-  border: 0.2rem solid #4d4d4d;
+  border: 1px #d6ddd7;
   cursor: pointer;
   padding: 0.8rem 1rem 0.7rem;
   text-transform: capitalize;
   margin: 5px;
+  color: white;
+  background-color: #1abc9c;
 }
 
 .btn.toggle-btn {
@@ -103,7 +106,7 @@ body {
 }
 
 .btn.toggle-btn[aria-pressed="true"] {
-  border-color: #4d4d4d;
+  border-color: #d6d1d1;
   text-decoration: underline;
 }
 
@@ -120,9 +123,12 @@ body {
 .btn__primary {
   background-color: #16a085;
   color: #fff;
-  width: 50px;
-  height: 50px;
-  margin-bottom: 70px;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 25px;
+  border: none;
+  font-size: 18px;
+  padding: auto;
 }
 
 .btn-group {
@@ -183,13 +189,13 @@ body {
 
 /* General app styles */.todoapp {
   background: #fff;
-  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%), 0 2.5rem 5rem 0 rgb(0 0 0 / 10%);
   margin: 8rem auto; /* Reduz a margem */
   padding: 1rem; /* Reduz o padding */
   position: relative;
   border-radius: 20px;
-  max-width: 500px; /* Ajuste a largura máxima */
-  width: 80%; /* Ajuste a largura relativa */
+  /*max-width: 500px; /* Ajuste a largura máxima */
+  width: 60%; /* Ajuste a largura relativa */
+  height: 50%;
 }
 
 @media screen and (min-width: 550px) {
@@ -209,11 +215,10 @@ body {
 }
 
 .todoapp>h1 {
-  display: block;
   margin: 0;
-  margin-bottom: 1rem;
   max-width: 100%;
   text-align: center;
+  margin-bottom: 0;
 }
 
 .label__lg {
@@ -225,23 +230,22 @@ body {
 }
 
 .input__lg {
-  border: 2px solid #6d6565;
-  padding: 2rem;
+  border: 1px solid #ece0e0;
+  /* padding: 2rem; */
 }
 
 .input__lg:focus-visible {
-  border-color: #4d4d4d;
+  border-color: #fff;
   box-shadow: inset 0 0 0 2px;
 }
 
 [class*="__lg"] {
   display: inline-block;
-  font-size: 1.9rem;
+  font-size: 1.5rem;
   width: 100%;
 }
 
 [class*="__lg"]:not(:last-child) {
-  margin-bottom: 1rem;
 }
 
 @media screen and (min-width: 620px) {
@@ -328,7 +332,7 @@ body {
 
 .c-cb>input[type="checkbox"]:focus-visible+label::before {
   border-width: 4px;
-  outline: 3px dashed #228bec;
+  outline: 3px dashed #8cbce9;
 }
 
 .c-cb>label::after {
@@ -393,6 +397,17 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.todo_title {
+  height: 70px;
+    border-radius: 5px 5px 0 0;
+    color: rgb(32, 29, 29);
+    font-size: 30px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .wrapper form {
@@ -479,33 +494,26 @@ form .signup-link a:hover {
   background: #fff;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2.5rem 5rem 0 rgba(0, 0, 0, 0.1);
   margin: 2rem auto;
-  /* Centraliza verticalmente e horizontalmente com margem automática */
   padding: 2rem;
-  /* Aumenta o preenchimento interno para mais espaço */
   border-radius: 10px;
   font-size: 20px;
-  /* Fonte amigável, ajuste conforme necessário */
   max-width: 80%;
-  /* Adapta a largura ao tamanho da tela, ajustado para maior largura */
   width: 500px;
-  /* Define a largura fixa */
   text-align: center;
-  /* Centraliza o texto dentro da div */
   position: relative;
 }
 
 .getDetails h2 {
   margin: 0 0 1.5rem 0;
-  /* Margem entre o título e o conteúdo */
-  font-size: 40px;
-  /* Tamanho da fonte do título, ajuste conforme necessário */
+  font-size: 25px;
+  font-weight: 300;
 }
 
 .getDetails p {
   margin: 0 0 1.5rem 0;
-  /* Margem entre linhas de texto */
-}
+  font-weight: 250;
 
+}
 /* Estilizando a barra de rolagem */
 ::-webkit-scrollbar {
   width: 12px;
@@ -556,6 +564,30 @@ body::-webkit-scrollbar {
   /* Esconder a barra de rolagem padrão */
 }
 
-textarea {
-  box-sizing: 10px;
+.logout {
+  display: flex;
+
+  cursor: pointer;
+  position: absolute;
+  text-decoration: underline;
+  top: 10px;
+  right: 10px;
+  color: blue;
+
+}
+
+.tasklist {
+text-align: center ;
+border-top: 1px solid #ddd;
+padding-bottom: 8px;
+margin-bottom: 16px;
+font-size: 15px;
+font-weight: 250;
+}
+
+.tasklist li {
+  border-bottom: 1px solid #ddd;
+    /* Cor e espessura da linha */
+    padding: 10px 0;
+    /* Espaçamento para separar as tarefas */
 }

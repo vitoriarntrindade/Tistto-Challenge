@@ -65,7 +65,6 @@ function Home() {
     <div className="todoapp stack-large">
         <button className="logout" type="button" onClick={handleLogout}>sair</button>
       <h1 className="todo_title">ToDo List</h1>
-      <TaskForm onSubmit={addTask} />
       <TaskList 
         tasks={tasks} 
         onEdit={editTask} 

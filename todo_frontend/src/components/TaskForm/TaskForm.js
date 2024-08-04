@@ -63,7 +63,7 @@ function TaskForm({ onSubmit }) {
         onChange={handleChange}
       />
       <button type="submit" className="btn btn__primary btn__lg">
-        Adicionar
+        adicionar
       </button>
     </form>
   );
