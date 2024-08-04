@@ -54,7 +54,7 @@ function TaskList({ onEdit, onViewDetails }) {
       <TaskForm onSubmit={addTask} />
       <ul className="tasklist">
         {tasks.map((task) => (
-          <li key={task.id}>
+          <li>
             <TaskItem
               task={task}
               onViewDetails={() => onViewDetails(task.id)}

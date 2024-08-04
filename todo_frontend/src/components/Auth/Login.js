@@ -2,16 +2,11 @@ import { performLogin } from "./LoginAction";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 function LoginForm() {
-  // Define o estado para armazenar os valores dos campos do formulário
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
   const navigate = useNavigate();
-  const [redirect, setRedirect] = useState(false);
 
-  // Função para lidar com mudanças nos campos do formulário
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -20,14 +15,18 @@ function LoginForm() {
 
       if (result.type === "LOGIN") {
         // Redireciona para a TaskList após o login bem-sucedido
-        navigate("/"); // ajuste o caminho conforme necessário
+        navigate("/");
       } else {
-        // Lide com o erro de login aqui
         console.error("Login error:", result.payload);
       }
     } catch (error) {
       console.error("Login error:", error);
     }
+  };
+
+  const handleRegisterClick = () => {
+    // Redireciona para a página de registro
+    navigate("/register");
   };
 
   return (
@@ -37,7 +36,6 @@ function LoginForm() {
           <span>Login</span>
         </div>
         <form onSubmit={handleSubmit} method="post">
-          {" "}
           <div className="row">
             <i className="fas fa-user"></i>
             <input
@@ -62,6 +60,15 @@ function LoginForm() {
           </div>
           <div className="row button">
             <input type="submit" value="Login" />
+          </div>
+          <div className="row">
+            <p>
+              Registre-se clicando{" "}
+              <span className="register-link" onClick={handleRegisterClick}>
+                aqui
+              </span>
+              .
+            </p>
           </div>
         </form>
       </div>

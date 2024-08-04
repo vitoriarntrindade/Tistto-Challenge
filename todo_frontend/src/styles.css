@@ -106,8 +106,9 @@ body {
 }
 
 .btn.toggle-btn[aria-pressed="true"] {
-  border-color: #d6d1d1;
+  border-color: #4d70a5;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .btn__danger {
@@ -553,7 +554,6 @@ html {
   /* Cor da barra de rolagem e da trilha */
 }
 
-/* Para IE e Edge */
 body {
   -ms-overflow-style: none;
   /* Desativar barra de rolagem padrão */
@@ -590,4 +590,10 @@ font-weight: 250;
     /* Cor e espessura da linha */
     padding: 10px 0;
     /* Espaçamento para separar as tarefas */
+}
+
+.register-link {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
 }
