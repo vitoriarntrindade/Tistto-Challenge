@@ -70,18 +70,32 @@ build seguido por docker-compose up --build**. Isso garante que as últimas muda
 sejam aplicadas e que todos os containers necessários (backend, frontend e banco de dados) sejam iniciados.
 
 3. **Aplicar Migrações no Banco de Dados**
+ 
+ ```
+    make migrate
+```
 
-``make migrate
-``
 Este comando aplica as migrações do Django ao banco de dados. Migrações são uma maneira de aplicar
 alterações no esquema do banco de dados, como criar tabelas e colunas, e garantir que o banco de dados 
 esteja atualizado com as últimas mudanças definidas nos arquivos de migração do Django.
 
 4. **Criar um Superusuário para o Django Admin**
 
-``make createsuperuser
-``
+ ```
+    make createsuperuser
+```
+
+
 Este comando cria um superusuário para o Django Admin. O superusuário é um usuário com 
 permissões administrativas completas que pode acessar a interface de administração do Django para 
 gerenciar o conteúdo e a configuração do site. Você será solicitado a fornecer um nome de usuário,
 e-mail e senha para o superusuário.
+
+5. **Abra seu navegador e acesse**:
+
+    ```
+    http://localhost:3000
+    ```
+
+    A aplicação react estará rodando na porta 3000.
+    O backend estará rodando na porta 8000.
