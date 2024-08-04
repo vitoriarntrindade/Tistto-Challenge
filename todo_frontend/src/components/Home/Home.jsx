@@ -53,9 +53,18 @@ function Home() {
     }
   };
 
+   const handleLogout = () => {
+    // Remove the token from localStorage
+    localStorage.removeItem('accessToken');
+    // Redirect to login page
+    navigate('/login');
+  };
+
+
   return (
     <div className="todoapp stack-large">
-      <h1>ToDo List</h1>
+        <button className="logout" type="button" onClick={handleLogout}>sair</button>
+      <h1 className="todo_title">ToDo List</h1>
       <TaskForm onSubmit={addTask} />
       <TaskList 
         tasks={tasks} 
