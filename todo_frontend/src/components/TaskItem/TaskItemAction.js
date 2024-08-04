@@ -1,6 +1,5 @@
 import axios from "axios";
 
-// URL base da API de tarefas
 const URL = "http://127.0.0.1:8000/api/tasks";
 
 // Obtém o token de acesso armazenado no localStorage
@@ -36,7 +35,7 @@ export const performDelete = async (id) => {
     return response.data; // Retorna os dados da tarefa deletada
   } catch (error) {
     console.error("Falha ao deletar a tarefa", error);
-    throw error; // Repassa o erro para que possa ser tratado no componente
+    throw error;
   }
 };
 
@@ -51,6 +50,6 @@ export const fetchTasks = async () => {
     return response.data; // Retorna a lista de tarefas
   } catch (error) {
     console.error("Failed to fetch tasks", error);
-    throw error; // Repassa o erro para que possa ser tratado onde a função for chamada
+    throw error;
   }
 };

@@ -19,6 +19,6 @@ export const taskDetails = async (id) => {
     return response.data; // Retorna os dados da tarefa atualizada
   } catch (error) {
     console.error("Falha ao atualizar a tarefa", error);
-    throw error; // Repassa o erro para que possa ser tratado no componente
+    throw error;
   }
 };

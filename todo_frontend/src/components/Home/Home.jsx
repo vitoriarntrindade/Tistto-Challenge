@@ -15,23 +15,12 @@ function Home() {
         const response = await fetchTasks();
         setTasks(response);
       } catch (error) {
-        console.error("Failed to fetch tasks", error);
+        console.error("", error);
       }
     };
     loadTasks();
   }, []);
 
-  const addTask = async (title, description) => {
-    try {
-      const newTask = await performCreateTask({
-        title,
-        description,
-      });
-      setTasks((prevTasks) => [...prevTasks, newTask]);
-    } catch (error) {
-      console.error('There was an error adding the task!', error);
-    }
-  };
 
   const editTask = (id) => {
     navigate(`/edit/${id}`);
@@ -48,15 +37,16 @@ function Home() {
         await performDelete(id);
         setTasks((prevTasks) => prevTasks.filter(task => task.id !== id));
       } catch (error) {
-        console.error('There was an error deleting the task!', error);
+        console.error('Erro ao tentar deletar tarefa!', error);
       }
     }
   };
 
    const handleLogout = () => {
-    // Remove the token from localStorage
+    // Remove o token do localStorage
+
     localStorage.removeItem('accessToken');
-    // Redirect to login page
+    // Redireciona para página de Login
     navigate('/login');
   };
 

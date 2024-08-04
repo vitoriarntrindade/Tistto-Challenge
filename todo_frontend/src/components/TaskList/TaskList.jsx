@@ -16,7 +16,7 @@ function TaskList({ onEdit, onViewDetails }) {
         const tasksData = await performTaskList();
         setTasks(tasksData);
       } catch (error) {
-        setError("Failed to fetch tasks");
+        setError("Se a página demorar para carregar, atualize seu navegador");
       } finally {
         setLoading(false);
       }

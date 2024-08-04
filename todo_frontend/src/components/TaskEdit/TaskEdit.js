@@ -17,7 +17,7 @@ function TaskEdit() {
         setTitle(taskData.title);
         setDescription(taskData.description);
       } catch (error) {
-        console.error("Failed to fetch task", error);
+        console.error("", error);
       }
     };
 

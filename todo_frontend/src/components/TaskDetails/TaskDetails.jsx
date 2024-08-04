@@ -5,7 +5,7 @@ import { performGetTask } from "../TaskEdit/TaskEditAction";
 function TaskDetails() {
   const { id } = useParams();
   const [task, setTask] = useState(null);
-  const [error, setError] = useState(null); // Adiciona estado para erros
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchTask = async () => {
@@ -25,7 +25,7 @@ function TaskDetails() {
   }, [id]);
 
   if (error) {
-    return <div>{error}</div>; // Exibe a mensagem de erro se ocorrer um erro
+    return <div>{error}</div>;
   }
 
   if (!task) {
