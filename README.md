@@ -58,44 +58,67 @@ Docker é utilizado para orquestrar os containers do backend e do frontend.
    ```
    git clone https://github.com/vitoriarntrindade/tistto-challenge.git
    cd tistto-challenge
+
+  
+2. **Crie um arquivo .env na raiz do seu repositório com placeholders para todas as variáveis de ambiente necessárias. Certifique-se de ter PostgreSQL instalado e configurado e uma SECRET_KEY do Django:**
+   ```
+   DATABASE_NAME='nome do seu banco de dados'
+   DATABASE_USER='seu username'
+   DATABASE_PASSWORD='sua senha'
+   DATABASE_HOST='localhost'
+   DATABASE_PORT=5434
+   SECRET_KEY ='sua chave secreta gerada pelo django'
+   DEBUG=TRUE
+   REACT_APP_BACKEND_URL=http://127.0.0.1:8000
+
+3. **Para gerar uma nova SECRET_KEY, você pode executar o seguinte comando Python:**
+   ```
+   from django.core.management.utils import get_random_secret_key
+   print(get_random_secret_key())
    
-2. **Comando make file para construir e subir as imagens dos containers**:
+4. **Comando make file para construir e subir as imagens dos containers**:
  ```
     make build-up
 ```
    
     
 Este comando constrói as imagens dos containers e os inicia. Ele é equivalente a executar **docker-compose 
-build seguido por docker-compose up --build**. Isso garante que as últimas mudanças no código e na configuração 
+build seguido por docker-compose up --build**. 
+
+Isso garante que as últimas mudanças no código e na configuração 
 sejam aplicadas e que todos os containers necessários (backend, frontend e banco de dados) sejam iniciados.
 
-3. **Aplicar Migrações no Banco de Dados**
+5. **Aplicar Migrações no Banco de Dados**
  
  ```
     make migrate
 ```
 
-Este comando aplica as migrações do Django ao banco de dados. Migrações são uma maneira de aplicar
+Este comando aplica as migrações do Django ao banco de dados. 
+
+Migrações são uma maneira de aplicar
 alterações no esquema do banco de dados, como criar tabelas e colunas, e garantir que o banco de dados 
 esteja atualizado com as últimas mudanças definidas nos arquivos de migração do Django.
 
-4. **Criar um Superusuário para o Django Admin**
+6. **Criar um Superusuário para o Django Admin**
 
  ```
     make createsuperuser
 ```
 
 
-Este comando cria um superusuário para o Django Admin. O superusuário é um usuário com 
-permissões administrativas completas que pode acessar a interface de administração do Django para 
+Este comando cria um superusuário para o Django Admin. 
+
+O superusuário é um usuário com permissões administrativas completas que pode acessar a interface de administração do Django para 
 gerenciar o conteúdo e a configuração do site. Você será solicitado a fornecer um nome de usuário,
 e-mail e senha para o superusuário.
 
-5. **Abra seu navegador e acesse**:
+7. **Abra seu navegador e acesse**:
 
-    ```
-    http://localhost:3000
-    ```
+   ```
+   http://localhost:3000
+   ```
 
-    A aplicação react estará rodando na porta 3000.
-    O backend estará rodando na porta 8000.
+  🌐  A aplicação react estará rodando na porta 3000.
+  
+  🌐  O backend estará rodando na porta 8000.
